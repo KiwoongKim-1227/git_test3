@@ -1,9 +1,6 @@
 package git_test3;
 
 public class Sort {
-
-}
-
 	public static void sort(int[] a) {
 		quickSort(a, 0, a.length - 1);
 	}
@@ -14,7 +11,15 @@ public class Sort {
 		a[j] = temp;
 	}
 
-static int partition(int[] a, int start, int end) { // TODO: partition 알고리즘을 구현해야 함 }
+	static int partition(int[] a, int start, int end) {
+		int value = a[end];
+		int i = start - 1;
+		for (int j = start; j <= end - 1; ++j)
+			if (a[j] < value)
+				swap(a, ++i, j);
+		swap(a, i + 1, end);
+		return i + 1;
+	}
 
 	static void quickSort(int[] a, int start, int end) {
 		if (start >= end)
